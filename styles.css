@@ -2,9 +2,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-size: 62.5%;
+}
+
 .board {
   margin: 0 auto;
-  width: 80vw;
+  width: 90vw;
   aspect-ratio: 1/1;
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -12,20 +16,35 @@
 .board .cell {
   height: 100%;
   border: 2px solid black;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.board .cell:first-child,
-.board .cell:nth-child(2),
-.board .cell:nth-child(3) {
+.board :nth-child(-n+3) {
   border-top: none;
 }
-.board .cell:nth-child(3n+1) {
+.board :nth-child(3n+1) {
   border-left: none;
 }
-.board .cell:nth-child(1n+7) {
+.board :nth-last-child(-n+3) {
   border-bottom: none;
 }
-.board .cell:nth-child(3n+3) {
+.board :nth-child(3n+3) {
   border-right: none;
+}
+
+.circle::after {
+  content: "";
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  border: 1rem solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*# sourceMappingURL=styles.css.map */
