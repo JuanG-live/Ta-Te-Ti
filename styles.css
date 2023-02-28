@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+.board {
+  margin: 0 auto;
+  width: 80vw;
+  aspect-ratio: 1/1;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+.board .cell {
+  height: 100%;
+  border: 2px solid black;
+}
+.board .cell:first-child,
+.board .cell:nth-child(2),
+.board .cell:nth-child(3) {
+  border-top: none;
+}
+.board .cell:nth-child(3n+1) {
+  border-left: none;
+}
+.board .cell:nth-child(1n+7) {
+  border-bottom: none;
+}
+.board .cell:nth-child(3n+3) {
+  border-right: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

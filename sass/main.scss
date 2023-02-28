@@ -1,0 +1,36 @@
+$cell-size: 100%;
+$color-border: black;
+$color-mark: $color-border;
+$color-mark-hover: gray;
+
+*{
+  box-sizing: border-box;
+}
+
+.board {
+    margin: 0 auto;
+    width: 80vw;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+
+    .cell {
+      height: $cell-size;
+      border: 2px solid $color-border;
+    }
+    .cell:first-child,
+    .cell:nth-child(2),
+    .cell:nth-child(3) {
+      border-top:none;
+    }
+    .cell:nth-child(3n +1){
+      border-left:none;
+    }
+    .cell:nth-child(1n+7){
+      border-bottom: none;
+    }
+    .cell:nth-child(3n+3){
+      border-right: none;
+    }
+  }
+  

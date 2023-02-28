@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "sass": "^1.58.3"
+  },
+  "scripts": {
+    "sass": "sass sass/main.scss style.css"
+  }
+}
+
