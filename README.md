@@ -8,7 +8,7 @@ Juego hecha desde 0 utilizando las tecnologias como HTML - CSS - SASS - JAVASCRI
 * [LinkedIn](https://www.linkedin.com/in/juan-g%C3%A9nova/)
 
 ## Ver ejemplo en vivo 🚀
-- [https://github.com/JuanG-live/Ta-Te-Ti]
+- https://github.com/JuanG-live/Ta-Te-Ti
 
 ## Contacto ✉
 - juang@live.com.ar
