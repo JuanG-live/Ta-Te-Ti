@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+*::after, *::before {
+  box-sizing: border-box;
+}
+
 :root {
   font-size: 62.5%;
 }
@@ -47,15 +51,23 @@
   transform: translate(-50%, -50%);
 }
 
-.cross::after {
+.cross::after,
+.cross::before {
   content: "";
-  width: 70%;
-  height: 70%;
-  border: 1rem solid black;
+  width: 0;
+  height: 87.5%;
+  border-left: 1rem solid black;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.cross::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cross::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /*# sourceMappingURL=style.css.map */

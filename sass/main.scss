@@ -12,6 +12,9 @@ $border-width: 0.5px;
 *{
   box-sizing: border-box;
 }
+*::after , *::before {
+  box-sizing: border-box;
+}
 
 :root {
   font-size: 62.5%;
@@ -47,6 +50,7 @@ $border-width: 0.5px;
       border-right: none;
     }
   }
+
     .circle::after {
       content: '';
       width: $mark-size;
@@ -59,14 +63,23 @@ $border-width: 0.5px;
       transform: translate(-50%, -50%);
     }
   
-    .cross::after {
+    .cross::after,
+    .cross::before {
       content: '';
-      width: $mark-size;
-      height: $mark-size;
-      border: $mark-border;
+      width: 0;
+      height: calc($mark-size * 1.25);
+      border-left: $mark-border;
+
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+    }
+
+    .cross::after{
+      transform: translate(-50%, -50%) rotate(45deg);
+    } 
+
+    .cross::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   
