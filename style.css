@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-}
-
-*::after, *::before {
+*, *::after, *::before {
   box-sizing: border-box;
 }
 
@@ -12,7 +8,7 @@
 
 .board {
   margin: 0 auto;
-  width: 90vw;
+  width: 80vw;
   aspect-ratio: 1/1;
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -22,9 +18,9 @@
   border: 2px solid black;
   cursor: pointer;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+.board .board.cross .cell:hover {
+  background-color: gray;
 }
 .board :nth-child(-n+3) {
   border-top: none;
@@ -39,7 +35,8 @@
   border-right: none;
 }
 
-.circle::after {
+.circle::after,
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
   content: "";
   width: 70%;
   height: 70%;
@@ -51,8 +48,14 @@
   transform: translate(-50%, -50%);
 }
 
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+  border: 1rem solid gray;
+}
+
 .cross::after,
-.cross::before {
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   content: "";
   width: 0;
   height: 87.5%;
@@ -62,12 +65,18 @@
   left: 50%;
 }
 
-.cross::after {
+.cross::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after {
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.cross::before {
+.cross::before .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+  border-left: 1rem solid gray;
 }
 
 /*# sourceMappingURL=style.css.map */

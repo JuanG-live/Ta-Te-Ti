@@ -19,29 +19,65 @@ const winningCombinations = [
     [2,4,6],
 ]; 
 
+startGame();
+
 /* EVENT LISTENERS */
 boardElement.addEventListener("click", handleClick);
 
 /* GAME FUNCTION */
+
+function startGame() {
+    setBoardHover(crossTurn);
+    crossTurn = true;
+
+    clearBoard();
+}
+
+function clearBoard() {
+    cellElements.forEach(cell => { 
+        cell.classList.remove(crossClass);
+        cell.classList.remove(circleClass);
+    })
+}
+function setBoardHover(crossTurn) {
+    if (boardElement.classList.contains('cross-plays')) {
+        boardElement.classList.replace('cross-plays','circle-plays');
+    } else if (boardElement.classList.contains('circle-plays')); {
+        boardElement.classList.replace('circle-plays', 'cross-plays');
+    }
+}
+
 function handleClick(e) {
     const cell = e.target;
     const currentMark = crossTurn ? crossClass : circleClass;
     const cellIsMarked = cell.classList.contains(crossClass) || cell.classList.contains(circleClass);
-
+    
     if(cellIsMarked) return;
-
+    
     placeMark(cell,currentMark);
+
     if(checkWin(currentMark)) {
         alert(`WINS: ${currentMark}`);
-    } else if (boardIsFull(currentMark)) {
-        alert(`It's a DRAW`);
-    }else {
-        swapTurn();
+        startGame();
+        return;
+
+    } 
+    if (boardIsFull(currentMark)) {
+        alert(`It's a DRAW!`);
+        startGame();
+        return;
     }
+
+    swapTurn();
+    setBoardHover(crossTurn);
 }
 
 function placeMark(cell, markToAdd) {
     cell.classList.add(markToAdd);
+}
+
+function clearBoardHover() {
+    boardElement.classList.remove('cross-plays')
 }
 
 function swapTurn() {
