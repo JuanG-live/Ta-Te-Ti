@@ -46,7 +46,6 @@ function setBoardHover(crossTurn) {
         boardElement.classList.replace('circle-plays', 'cross-plays');
     }
 }
-
 function handleClick(e) {
     const cell = e.target;
     const currentMark = crossTurn ? crossClass : circleClass;
@@ -71,15 +70,12 @@ function handleClick(e) {
     swapTurn();
     setBoardHover(crossTurn);
 }
-
 function placeMark(cell, markToAdd) {
     cell.classList.add(markToAdd);
 }
-
 function clearBoardHover() {
     boardElement.classList.remove('cross-plays')
 }
-
 function swapTurn() {
     crossTurn = !crossTurn;
 }

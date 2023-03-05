@@ -70,7 +70,8 @@
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.cross::before .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 

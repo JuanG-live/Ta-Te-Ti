@@ -85,7 +85,7 @@ $border-width: 0.5px;
       transform: translate(-50%, -50%) rotate(45deg);
     } 
     
-    .cross::before
+    .cross::before,
     .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
