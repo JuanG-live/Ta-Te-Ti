@@ -1,96 +1,140 @@
-$color-border: black;
-$color-mark: $color-border;
+
+$color-primary: #4E6E81;
+$color-secondary: #F9DBBB ;
+$color-secondary-lighter: #FF0303;
+$color-secondaryo: #2E3840;
+$gradient-bg: linear-gradient(to right, $color-primary, $color-secondaryo);
+
+$color-border: #F9DBBB;
+$color-cross: $color-secondary-lighter;
+$color-circle: $color-primary;
 $color-mark-hover: gray;
+
 
 $cell-size: 100%;
 $mark-size: 70%;
-$mark-border: 1rem solid $color-mark;
+$mark-border-cross: 1rem solid $color-cross;
+$mark-border-circle: 1rem solid $color-circle;
 $mark-border-hover: 1rem solid $color-mark-hover;
-
 
 $border-width: 0.5px;
 
-*,*::after , *::before{
+
+// RESET 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tilt+Warp&display=swap');
+
+// RESET
+*, *::after , *::before{
   box-sizing: border-box;
 }
 
 :root {
   font-size: 62.5%;
+  font-family: '', sans-serif;
 }
 
+//INTERFACE
+
+.container {
+  padding: 2rem;
+  text-align: center;
+  padding: 4rem;
+  border-radius: 12rem;
+  background-color: gray;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3rem;
+
+}
+body {
+  background: $gradient-bg;
+}
+
+h1 {
+  font-size: 5rem;
+  color: $color-secondary;
+  margin: 0;
+}
+
+// GAME ASSETS 
+
 .board {
-    margin: 0 auto;
-    width: 80vw;
-    aspect-ratio: 1 / 1;
-    display: grid;
-    grid-template-columns: repeat(3,auto);
+  margin: 0 auto;
+  width: 90vw;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(3,auto);
 
-    & .cell {
-      height: $cell-size;
-      border: 2px solid $color-border;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .board.cross .cell:hover {
-     background-color: $color-mark-hover;
-   }
-
-    & :nth-child(-n+3) {
-      border-top:none;
-    }
-    & :nth-child(3n+1){
-      border-left:none;
-    }
-    & :nth-last-child(-n+3){
-      border-bottom: none;
-    }
-    & :nth-child(3n+3){
-      border-right: none;
-    }
+  & .cell {
+    height: $cell-size;
+    border: $border-width solid $color-border;
+    cursor: pointer;
+    position: relative;
   }
-    .circle::after,
-    .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-      content: '';
-      width: $mark-size;
-      height: $mark-size;
-      border-radius: 50%;
-      border: $mark-border;
 
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-      border: $mark-border-hover;
-    }
-    .cross::after, 
-    .cross::before, 
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::before
-    {
-      content: '';
-      width: 0;
-      height: calc($mark-size * 1.25);
-      border-left: $mark-border;
-      
-      position: absolute;
-      top: 50%;
-      left: 50%;
-    }
+  /* DRAW BOARD LINES */
+
+  & :nth-child(-n+3) {
+    border-top:none;
+  }
+  & :nth-child(3n+1){
+    border-left:none;
+  }
+  & :nth-last-child(-n+3){
+    border-bottom: none;
+  }
+  & :nth-child(3n+3){
+    border-right: none;
+  }
+}
+  .circle::after,
+  .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+    content: '';
+    width: $mark-size;
+    height: $mark-size;
+    border-radius: 50%;
+    border: $mark-border-circle;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .board.circle-plays
+  .cell:not(.cross):not(.circle):hover::after {
+    border: $mark-border-hover;
+  }
+  .cross::after, 
+  .cross::before, 
+  .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+  .board.cross-plays .cell:not(.cross):not(.circle):hover::before
+  {
+    content: '';
+    width: 0;
+    height: calc($mark-size * 1.25);
+    border-left: $mark-border-cross;
     
-    .cross::after,
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::after{
-      transform: translate(-50%, -50%) rotate(45deg);
-    } 
-    
-    .cross::before,
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-    
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::after, 
-    .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-      border-left: $mark-border-hover;
-    } 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  
+  .cross::after,
+  .board.cross-plays
+  .cell:not(.cross):not(.circle):hover::after{
+    transform: translate(-50%, -50%) rotate(45deg);
+  } 
+  
+  .cross::before,
+  .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+  .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+    border-left: $mark-border-hover;
+  } 
+

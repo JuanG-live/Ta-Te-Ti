@@ -25,14 +25,12 @@ startGame();
 boardElement.addEventListener("click", handleClick);
 
 /* GAME FUNCTION */
-
 function startGame() {
     setBoardHover(crossTurn);
     crossTurn = true;
 
     clearBoard();
 }
-
 function clearBoard() {
     cellElements.forEach(cell => { 
         cell.classList.remove(crossClass);
@@ -40,11 +38,9 @@ function clearBoard() {
     })
 }
 function setBoardHover(crossTurn) {
-    if (boardElement.classList.contains('cross-plays')) {
-        boardElement.classList.replace('cross-plays','circle-plays');
-    } else if (boardElement.classList.contains('circle-plays')); {
-        boardElement.classList.replace('circle-plays', 'cross-plays');
-    }
+    crossTurn ? 
+        boardElement.classList.replace('circle-play', 'cross-plays'):
+        boardElement.classList.replace('cross-plays', 'circle-plays');
 }
 function handleClick(e) {
     const cell = e.target;
@@ -59,7 +55,6 @@ function handleClick(e) {
         alert(`WINS: ${currentMark}`);
         startGame();
         return;
-
     } 
     if (boardIsFull(currentMark)) {
         alert(`It's a DRAW!`);
@@ -79,7 +74,6 @@ function clearBoardHover() {
 function swapTurn() {
     crossTurn = !crossTurn;
 }
-
 function checkWin(currentMark) {
    return winningCombinations.some(combinations => {
         return combinations.every(cell =>{
@@ -87,7 +81,6 @@ function checkWin(currentMark) {
         })
     });
 }
-
 function boardIsFull(){
     return [...cellElements].every(cell => {
         return cell.classList.contains(crossClass) || 
