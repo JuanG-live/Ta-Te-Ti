@@ -1,8 +1,8 @@
-
 $color-primary: #4E6E81;
 $color-secondary: #F9DBBB ;
 $color-secondary-lighter: #FF0303;
 $color-secondaryo: #2E3840;
+$color-button: white;
 $gradient-bg: linear-gradient(to right, $color-primary, $color-secondaryo);
 
 $color-border: #F9DBBB;
@@ -19,8 +19,13 @@ $mark-border-hover: 1rem solid $color-mark-hover;
 
 $border-width: 0.5px;
 
+$corner-elements: 1rem;
 
-// RESET 
+$xl-text: 7rem;
+$lg-text: 5rem;
+$md-text: 2.5rem; 
+$button-tex: 2.5rem;
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tilt+Warp&display=swap');
 
 // RESET
@@ -35,27 +40,91 @@ $border-width: 0.5px;
 
 //INTERFACE
 
+body {
+  background: $gradient-bg;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: $xl-text;
+  color: $color-secondary;
+  margin: 0;
+}
+button {
+  font-size: $md-text;
+  font-family: inherit;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: $corner-elements;
+  border: none;
+  color: black;
+  background-color: $color-button;
+}
 .container {
   padding: 2rem;
-  text-align: center;
-  padding: 4rem;
-  border-radius: 12rem;
+  border-radius: 2rem;
   background-color: gray;
+  //width: 80vw;
+  //max-width: 800px;
+  padding: 4rem;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 3rem;
+  gap: 2rem;
+
+  border-bottom: 0px 2rem 0px -10px $color-primary;
 
 }
-body {
-  background: $gradient-bg;
-}
 
-h1 {
-  font-size: 5rem;
-  color: $color-secondary;
-  margin: 0;
+// INTERFACE
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  
+  & dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $lg-text;
+    
+    width: 80%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: $corner-elements;
+    
+  }
+  & nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    align-items: center;
+
+    & .score{
+      font-size: 3rem;
+    }
+
+    & .score-crosses {
+      color: $color-cross;
+    }
+    & .score-circle {
+      color: $color-circle;
+    } 
+    & button {
+      font-size: $md-text;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      border: none;
+    }
+    & button:active {
+      transform: scale(1.1);
+    }
 }
 
 // GAME ASSETS 
@@ -137,4 +206,4 @@ h1 {
   .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
     border-left: $mark-border-hover;
   } 
-
+}
