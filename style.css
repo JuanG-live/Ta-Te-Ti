@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tilt+Warp&display=swap");
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -10,7 +12,11 @@
 
 body {
   background: linear-gradient(to right, #4E6E81, #2E3840);
-  padding: 2rem;
+  padding: 4rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
@@ -31,10 +37,13 @@ button {
 }
 
 .container {
+  margin: 0 auto;
   padding: 2rem;
   border-radius: 2rem;
   background-color: gray;
-  padding: 4rem;
+  width: 80vw;
+  max-width: 800px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -52,7 +61,7 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 5rem;
+  font-size: 4rem;
   width: 80%;
   padding: 2rem;
   background-color: white;
@@ -78,41 +87,47 @@ button {
 }
 .container nav button {
   font-size: 2.5rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
   border: none;
+  cursor: pointer;
 }
 .container nav button:active {
   transform: scale(1.1);
 }
-.container .board {
+
+.board {
   margin: 0 auto;
-  width: 90vw;
+  width: 90%;
   aspect-ratio: 1/1;
   display: grid;
   grid-template-columns: repeat(3, auto);
   /* DRAW BOARD LINES */
 }
-.container .board .cell {
+.board .cell {
   height: 100%;
   border: 0.5px solid #F9DBBB;
   cursor: pointer;
-  position: relative;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.container .board :nth-child(-n+3) {
+.board :nth-child(-n+3) {
   border-top: none;
 }
-.container .board :nth-child(3n+1) {
+.board :nth-child(3n+1) {
   border-left: none;
 }
-.container .board :nth-last-child(-n+3) {
+.board :nth-last-child(-n+3) {
   border-bottom: none;
 }
-.container .board :nth-child(3n+3) {
+.board :nth-child(3n+3) {
   border-right: none;
 }
-.container .circle::after,
-.container .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+
+.circle::after,
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
   content: "";
   width: 70%;
   height: 70%;
@@ -123,13 +138,15 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.container .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
   border: 1rem solid gray;
 }
-.container .cross::after,
-.container .cross::before,
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+
+.cross::after,
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   content: "";
   width: 0;
   height: 87.5%;
@@ -138,16 +155,19 @@ button {
   top: 50%;
   left: 50%;
 }
-.container .cross::after,
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::after {
+
+.cross::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after {
   transform: translate(-50%, -50%) rotate(45deg);
 }
-.container .cross::before,
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
-.container .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   border-left: 1rem solid gray;
 }
 

@@ -1,5 +1,5 @@
 $color-primary: #4E6E81;
-$color-secondary: #F9DBBB ;
+$color-secondary: #F9DBBB;
 $color-secondary-lighter: #FF0303;
 $color-secondaryo: #2E3840;
 $color-button: white;
@@ -22,14 +22,16 @@ $border-width: 0.5px;
 $corner-elements: 1rem;
 
 $xl-text: 7rem;
-$lg-text: 5rem;
-$md-text: 2.5rem; 
+$lg-text: 4rem;
+$md-text: 2.5rem;
 $button-tex: 2.5rem;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Tilt+Warp&display=swap');
 
 // RESET
-*, *::after , *::before{
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -38,11 +40,14 @@ $button-tex: 2.5rem;
   font-family: '', sans-serif;
 }
 
-//INTERFACE
-
 body {
   background: $gradient-bg;
-  padding: 2rem;
+  padding: 4rem;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
@@ -50,6 +55,7 @@ h1 {
   color: $color-secondary;
   margin: 0;
 }
+
 button {
   font-size: $md-text;
   font-family: inherit;
@@ -60,13 +66,15 @@ button {
   color: black;
   background-color: $color-button;
 }
+
 .container {
+  margin: 0 auto;
   padding: 2rem;
   border-radius: 2rem;
   background-color: gray;
-  //width: 80vw;
-  //max-width: 800px;
-  padding: 4rem;
+  width: 80vw;
+  max-width: 800px;
+  padding: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -74,11 +82,9 @@ button {
   gap: 2rem;
 
   border-bottom: 0px 2rem 0px -10px $color-primary;
-
 }
 
 // INTERFACE
-
 .container {
   margin: 0 auto;
   text-align: center;
@@ -95,8 +101,8 @@ button {
     padding: 2rem;
     background-color: white;
     border-radius: $corner-elements;
-    
   }
+
   & nav {
     display: flex;
     flex-direction: row;
@@ -118,92 +124,100 @@ button {
     } 
     & button {
       font-size: $md-text;
-      padding: 0.5rem;
-      border-radius: 1rem;
+      padding: 1rem;
+      border-radius: 0.75rem;
       border: none;
+      cursor: pointer;
     }
     & button:active {
       transform: scale(1.1);
     }
+  }
 }
 
 // GAME ASSETS 
 
 .board {
   margin: 0 auto;
-  width: 90vw;
+  width: 90%;
   aspect-ratio: 1 / 1;
   display: grid;
-  grid-template-columns: repeat(3,auto);
+  grid-template-columns: repeat(3, auto);
 
   & .cell {
     height: $cell-size;
     border: $border-width solid $color-border;
     cursor: pointer;
-    position: relative;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
 
   /* DRAW BOARD LINES */
 
   & :nth-child(-n+3) {
-    border-top:none;
+    border-top: none;
   }
-  & :nth-child(3n+1){
-    border-left:none;
+
+  & :nth-child(3n+1) {
+    border-left: none;
   }
-  & :nth-last-child(-n+3){
+
+  & :nth-last-child(-n+3) {
     border-bottom: none;
   }
-  & :nth-child(3n+3){
+
+  & :nth-child(3n+3) {
     border-right: none;
   }
 }
-  .circle::after,
-  .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-    content: '';
-    width: $mark-size;
-    height: $mark-size;
-    border-radius: 50%;
-    border: $mark-border-circle;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.circle::after,
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+  content: '';
+  width: $mark-size;
+  height: $mark-size;
+  border-radius: 50%;
+  border: $mark-border-circle;
 
-  .board.circle-plays
-  .cell:not(.cross):not(.circle):hover::after {
-    border: $mark-border-hover;
-  }
-  .cross::after, 
-  .cross::before, 
-  .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
-  .board.cross-plays .cell:not(.cross):not(.circle):hover::before
-  {
-    content: '';
-    width: 0;
-    height: calc($mark-size * 1.25);
-    border-left: $mark-border-cross;
-    
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-  
-  .cross::after,
-  .board.cross-plays
-  .cell:not(.cross):not(.circle):hover::after{
-    transform: translate(-50%, -50%) rotate(45deg);
-  } 
-  
-  .cross::before,
-  .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-    transform: translate(-50%, -50%) rotate(-45deg);
-  }
-  
-  .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
-  .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-    border-left: $mark-border-hover;
-  } 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+  border: $mark-border-hover;
+}
+
+.cross::after,
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+  content: '';
+  width: 0;
+  height: calc($mark-size * 1.25);
+  border-left: $mark-border-cross;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.cross::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cross::before,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.board.cross-plays .cell:not(.cross):not(.circle):hover::after,
+.board.cross-plays .cell:not(.cross):not(.circle):hover::before {
+  border-left: $mark-border-hover;
 }

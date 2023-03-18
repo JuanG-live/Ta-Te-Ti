@@ -1,7 +1,7 @@
 /*DOM ELEMENTS*/ 
 const boardElement = document.querySelector('[board]');
 const cellElements = document.querySelectorAll('[cell]');
-
+const dialogElement = document.queryElementsByTagName('dialog');
 /* GLOBALS */
 let crossTurn = true; //Initial turn for the CROSS
 const crossClass = 'cross';
