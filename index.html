@@ -11,7 +11,7 @@
 <body>
     <main class="container">
         <h1>Ta-te-ti</h1>
-        <div board class="board">
+        <div board class="board cross-plays">
             <div cell class="cell"></div>
             <div cell class="cell"></div>
             <div cell class="cell"></div>
@@ -22,21 +22,21 @@
             <div cell class="cell"></div>
             <div cell class="cell"></div>
         </div>
-        <div class="toast">GAME RESULT</div>
         <nav>
-            <div class="score score-crosses">
-                <span>Crosses: </span><span crosses-score>0</span>
-            </div>
-            <dialog open class="toast">
-                The <span>CROSSES</span> win! <form method="dialog">
+            <dialog>
+                 <span winner-message></span>
+                 <form game-end-form method="dialog">
                     <button>OK</button>
                 </form>
             </dialog>
-            <div>
-                <button>RESET</button>
+            <div scores class="scores">
+                <div class="score score-crosses">
+                    <span>Crosses: </span><span crosses-score>0</span>
+                </div>
+                <button reset-btn>RESET</button>
             </div>
             <div class="score score-circle">
-                <span>Circle: </span><span circle-score>0</span>
+                <span>Circles: </span><span circle-score>0</span>
             </div>
         </nav>
     </main>  

@@ -7,8 +7,8 @@ $gradient-bg: linear-gradient(to right, $color-primary, $color-secondaryo);
 
 $color-border: #F9DBBB;
 $color-cross: $color-secondary-lighter;
-$color-circle: $color-primary;
-$color-mark-hover: gray;
+$color-circle: $color-secondary;
+$color-mark-hover: $color-secondary;
 
 
 $cell-size: 100%;
@@ -37,7 +37,7 @@ $button-tex: 2.5rem;
 
 :root {
   font-size: 62.5%;
-  font-family: '', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -55,16 +55,16 @@ h1 {
   color: $color-secondary;
   margin: 0;
 }
-
-button {
+  button {
   font-size: $md-text;
   font-family: inherit;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
-  border-radius: $corner-elements;
-  border: none;
-  color: black;
-  background-color: $color-button;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+ button:active {
+  transform: scale(1.1);
 }
 
 .container {
@@ -79,41 +79,41 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1rem;
+  text-align: center;
 
   border-bottom: 0px 2rem 0px -10px $color-primary;
 }
 
 // INTERFACE
-.container {
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  
-  & dialog {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: $lg-text;
-    
-    width: 80%;
-    padding: 2rem;
-    background-color: white;
-    border-radius: $corner-elements;
-  }
 
-  & nav {
+dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  color: white;
+  font-size: $lg-text;
+  
+  padding: 2rem;
+  background: $color-secondary-lighter;
+  border-radius: $corner-elements;
+  border-width: 0px;
+}
+
+.container {
+  
+  & .scores {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: nowrap;
     font-size: 2.5rem;
-    margin-top: 1rem;
     align-items: center;
 
     & .score{
-      font-size: 3rem;
+      font-size: $md-text;
     }
 
     & .score-crosses {
@@ -122,16 +122,7 @@ button {
     & .score-circle {
       color: $color-circle;
     } 
-    & button {
-      font-size: $md-text;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: none;
-      cursor: pointer;
-    }
-    & button:active {
-      transform: scale(1.1);
-    }
+
   }
 }
 
@@ -148,11 +139,8 @@ button {
     height: $cell-size;
     border: $border-width solid $color-border;
     cursor: pointer;
+    position: relative;
     aspect-ratio: 1/1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
 
@@ -177,44 +165,43 @@ button {
 
 .circle::after,
 .board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-  content: '';
-  width: $mark-size;
-  height: $mark-size;
-  border-radius: 50%;
-  border: $mark-border-circle;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    content: '';
+    width: $mark-size;
+    height: $mark-size;
+    border-radius: 50%;
+    border: $mark-border-circle;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-  border: $mark-border-hover;
-}
-
-.cross::after,
+.cross::after, 
 .cross::before,
 .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
 .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-  content: '';
-  width: 0;
-  height: calc($mark-size * 1.25);
-  border-left: $mark-border-cross;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    content: '';
+    width: 0;
+    height: calc($mark-size * 1.25);
+    border-left: $mark-border-cross;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .cross::after,
 .board.cross-plays .cell:not(.cross):not(.circle):hover::after {
-  transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .cross::before,
 .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+  border: $mark-border-hover;
 }
 
 .board.cross-plays .cell:not(.cross):not(.circle):hover::after,

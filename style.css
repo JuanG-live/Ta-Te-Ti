@@ -7,7 +7,7 @@
 
 :root {
   font-size: 62.5%;
-  font-family: "", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -30,10 +30,12 @@ button {
   font-family: inherit;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
-  border-radius: 1rem;
-  border: none;
-  color: black;
-  background-color: white;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(1.1);
 }
 
 .container {
@@ -47,53 +49,41 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1rem;
+  text-align: center;
   border-bottom: 0px 2rem 0px -10px #4E6E81;
 }
 
-.container {
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-}
-.container dialog {
+dialog {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 4rem;
   width: 80%;
+  color: white;
+  font-size: 4rem;
   padding: 2rem;
-  background-color: white;
+  background: #FF0303;
   border-radius: 1rem;
+  border-width: 0px;
 }
-.container nav {
+
+.container .scores {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: nowrap;
   font-size: 2.5rem;
-  margin-top: 1rem;
   align-items: center;
 }
-.container nav .score {
-  font-size: 3rem;
+.container .scores .score {
+  font-size: 2.5rem;
 }
-.container nav .score-crosses {
+.container .scores .score-crosses {
   color: #FF0303;
 }
-.container nav .score-circle {
-  color: #4E6E81;
-}
-.container nav button {
-  font-size: 2.5rem;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  border: none;
-  cursor: pointer;
-}
-.container nav button:active {
-  transform: scale(1.1);
+.container .scores .score-circle {
+  color: #F9DBBB;
 }
 
 .board {
@@ -108,10 +98,8 @@ button {
   height: 100%;
   border: 0.5px solid #F9DBBB;
   cursor: pointer;
+  position: relative;
   aspect-ratio: 1/1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .board :nth-child(-n+3) {
   border-top: none;
@@ -132,15 +120,11 @@ button {
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  border: 1rem solid #4E6E81;
+  border: 1rem solid #F9DBBB;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
-  border: 1rem solid gray;
 }
 
 .cross::after,
@@ -166,9 +150,13 @@ button {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.board.circle-plays .cell:not(.cross):not(.circle):hover::after {
+  border: 1rem solid #F9DBBB;
+}
+
 .board.cross-plays .cell:not(.cross):not(.circle):hover::after,
 .board.cross-plays .cell:not(.cross):not(.circle):hover::before {
-  border-left: 1rem solid gray;
+  border-left: 1rem solid #F9DBBB;
 }
 
 /*# sourceMappingURL=style.css.map */
